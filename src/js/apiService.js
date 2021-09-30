@@ -1,19 +1,31 @@
-export default class ImagesApiServer{
-    construcor() {
-        this.searchQUery;
+const apiKey = '23620091-2d5d28040986b37b269a969d4';
+const BASE_URL = 'https://pixabay.com/api/'
+
+export default class ImagesApiServer {
+    constructor() {
+        this.searchQuery = '';
+        this.page = 1;
     }
 
     fetchImages() {
-       /*  const options = {
-            headers: {
-                Autorization: '23620091-2d5d28040986b37b269a969d4'
-            } 
-        } */
+        const url = `${BASE_URL}?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${apiKey}`;
+        return fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                this.page += 1;
+                return data.hits;
+            });
+    }
 
-        const apyKey = '23620091-2d5d28040986b37b269a969d4';
+    resetPage() {
+        this.page = 1;
+    }
 
-        const url = `https://pixabay.com/api/?image_type=photo&orientation=horizontal&q=${this.searchQUery}&page=1&per_page=12&key=${apyKey}`;
+    get query() {
+        return this.searchQuery;
+    }
 
-        fetch(url).then(response => response.json()).then(console.log)
+    set query(newQuery) {
+        this.searchQuery = newQuery;
     }
 }
