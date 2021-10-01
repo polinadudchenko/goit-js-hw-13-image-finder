@@ -37,7 +37,7 @@ function fetchImages() {
     imagesApiService.fetchImages().then(images => {
         appendImagesMarkup(images);
         loadMoreBtn.enable();
-        smothieScroll();
+        smoothScroll();
     }).catch(onFetchError);
 }
 
@@ -57,7 +57,7 @@ function clearImagesContainer() {
     galleryContainer.innerHTML = '';
 }
 
-function smothieScroll() {
+function smoothScroll() {
 loadMoreBtn.refs.button.scrollIntoView({
   behavior: 'smooth',
   block: 'end',
