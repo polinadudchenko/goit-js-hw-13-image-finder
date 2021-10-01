@@ -14,7 +14,7 @@ export default class ImagesApiServer {
             .then(data => {
                 this.page += 1;
                 return data.hits;
-            });
+            }).catch(err => { throw new Error(err) });
     }
 
     resetPage() {
