@@ -42,15 +42,17 @@ function fetchImages() {
 }
 
 function appendImagesMarkup(images) {
+    if (images.length === 0) {
+        throw new Error()
+    } 
     galleryContainer.insertAdjacentHTML('beforeend', imagesTmpl(images))
 }
 
-function  onFetchError(err) {
-    if (err.status === 404) {
-        error({
-            text: 'No matches found, please enter a new query.'
-        })
-    }
+function onFetchError() {
+    loadMoreBtn.hide();
+    error({
+        text: 'No matches found, please enter a new query.'
+    })
 }
 
 function clearImagesContainer() {
