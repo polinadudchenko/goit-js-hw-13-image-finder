@@ -3,6 +3,7 @@ import ImagesApiService from './js/apiService';
 import LoadMoreBtn from './js/loadMoreBtn';
 import getRefs from './js/refs';
 import imagesTmpl from './templates/imagesTmpl.hbs';
+import imgModal from './js/imgModal'
 import {error, alert, defaultModules } from '@pnotify/core/dist/PNotify.js';
 import * as PNotifyMobile from '@pnotify/mobile/dist/PNotifyMobile.js';
 import '@pnotify/core/dist/PNotify.css';
@@ -18,6 +19,7 @@ const loadMoreBtn = new LoadMoreBtn({
 
 searchForm.addEventListener('submit', onSearch);
 loadMoreBtn.refs.button.addEventListener('click', fetchImages);
+galleryContainer.addEventListener('click', imgModal)
 
 function onSearch(event) {
     event.preventDefault();
