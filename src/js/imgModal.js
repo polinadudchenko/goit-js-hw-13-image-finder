@@ -1,6 +1,5 @@
 import * as basicLightbox from 'basiclightbox'
-export default function openImgModal(e) {
-    e.preventDefault();    
+export default function openImgModal(e) {  
     if (e.target.className !== 'gallery-card-img') {
         return;
     }
